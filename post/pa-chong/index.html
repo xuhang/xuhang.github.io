@@ -1,0 +1,502 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>爬虫 | 1M3F 自留地</title>
+
+<link rel="shortcut icon" href="https://xuhang.github.io/favicon.ico?v=1733627855617">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://xuhang.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            1M3F 自留地
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1733627855617" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    爬虫
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2024-12-08 ·
+                    </time>
+                    
+                        <a href="https://xuhang.github.io/tag/b5Ycy1BiBE/" class="post-tags">
+                            # 爬虫
+                        </a>
+                    
+                        <a href="https://xuhang.github.io/tag/Bv1ZpNk-8gU/" class="post-tags">
+                            # chrome 插件
+                        </a>
+                    
+                        <a href="https://xuhang.github.io/tag/3DI6gYWcbcS/" class="post-tags">
+                            # python
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="〇-从入门到入狱">〇、从入门到入狱</h1>
+<p><a href="https://github.com/HiddenStrawberry/Crawler_Illegal_Cases_In_China">中国爬虫违法违规案例汇总</a></p>
+<figure data-type="image" tabindex="1"><img src="https://xuhang.github.io/post-images/1733627425302.png" alt="" loading="lazy"></figure>
+<h1 id="一-什么是爬虫">一、什么是爬虫</h1>
+<figure data-type="image" tabindex="2"><img src="https://xuhang.github.io/post-images/1733627403396.png" alt="什么是爬虫" loading="lazy"></figure>
+<h1 id="二-爬虫的分类">二、爬虫的分类</h1>
+<!-- more -->
+<p>搜索引擎：百度、谷歌</p>
+<p>数据采集：天眼查、企查查</p>
+<p>薅羊毛：抢票机器人、秒杀软件，比价软件，微博僵尸粉</p>
+<p>……</p>
+<h1 id="三-爬虫与反爬虫">三、爬虫与反爬虫</h1>
+<ol>
+<li>
+<p>君子协议：robots.txt</p>
+<p><a href="http://www.baidu.com/robots.txt">www.baidu.com/robots.txt</a></p>
+</li>
+</ol>
+<p><img src="https://xuhang.github.io/post-images/1733627377901.png" alt="robots协议" loading="lazy"><br>
+![image-20220303093748092]</p>
+<ol>
+<li>最简单的爬虫</li>
+</ol>
+<p>Python版</p>
+<pre><code class="language-python">import requests
+rsp = requests.get('http://www.httpbin.org/user-agent')
+</code></pre>
+<p>Java版</p>
+<pre><code class="language-java">@Test
+public void testHttpclient() throws IOException {
+    CloseableHttpClient client = HttpClientBuilder.create().build();
+    HttpGet get = new HttpGet(&quot;http://www.httpbin.org/user-agent&quot;);
+    CloseableHttpResponse response = client.execute(get);
+    HttpEntity entity = response.getEntity();
+    String string = EntityUtils.toString(entity);
+    System.out.println(string);
+}
+    
+@Test
+public void testHtmlUnit() throws IOException {
+    WebClient edge = new WebClient(BrowserVersion.FIREFOX);
+    edge.getOptions().setCssEnabled(false);
+    edge.getOptions().setJavaScriptEnabled(true);
+    edge.getOptions().setThrowExceptionOnFailingStatusCode(false);
+    edge.getOptions().setThrowExceptionOnScriptError(false);
+    edge.waitForBackgroundJavaScript(600*1000);
+    UnexpectedPage page = edge.getPage(&quot;http://www.httpbin.org/user-agent&quot;);
+    System.out.println(page.getWebResponse().getContentAsString());
+}
+</code></pre>
+<p>加入依赖</p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+    &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+    &lt;version&gt;4.5.3&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;net.sourceforge.htmlunit&lt;/groupId&gt;
+    &lt;artifactId&gt;htmlunit&lt;/artifactId&gt;
+    &lt;version&gt;2.45.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>但是这样的爬虫很容易通过检测UA头被发现，服务器就可以对这样的爬虫做出反爬的措施。</p>
+<ol start="2">
+<li>修改爬虫的UA</li>
+</ol>
+<p>Python版</p>
+<pre><code class="language-python">header = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36'
+}
+rsp = requests.get('http://www.httpbin.org/user-agent', headers = header)
+</code></pre>
+<p>Java版</p>
+<pre><code class="language-java">@Test
+public void testHttpclient() throws IOException {
+    CloseableHttpClient client = HttpClientBuilder.create().build();
+    HttpGet get = new HttpGet(&quot;http://www.httpbin.org/user-agent&quot;);
+    get.setHeader(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36&quot;);
+    CloseableHttpResponse response = client.execute(get);
+    HttpEntity entity = response.getEntity();
+    String string = EntityUtils.toString(entity);
+    System.out.println(string);
+}
+</code></pre>
+<ol start="3">
+<li>控制爬虫的频率</li>
+</ol>
+<p>修改UA只是第一步，服务器还会针对每个ip地址的请求频率来识别爬虫，比如一分钟内请求几百几千次，一天24小时不间断的请求，这些特征都可以被识别为爬虫程序。所以在大规模抓取数据时，需要对降低抓取频率，比如每次请求后sleep 3~5 秒；但是这样会大大降低抓取的效率，所以这里就需要用到代理IP池——当然也可以通过部署集群的方式来提高爬的速度</p>
+<p>代理服务器会转发爬虫请求，这样服务器针对IP的限制就会被绕过。</p>
+<pre><code class="language-python">proxy = {
+    'http': '',
+    'https': ''
+}
+header = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36'
+}
+rsp = requests.get('http://www.httpbin.org/user-agent', headers = header, proxies = proxy)
+</code></pre>
+<blockquote>
+<p>代理IP分透明代理，匿名代理和高匿代理，透明代理其实并不会隐藏爬虫的真实IP，匿名代理会在请求头里带上爬虫的IP，有一定几率会被识别，高匿代理则会完全隐藏爬虫的IP，更推荐使用。</p>
+</blockquote>
+<p>据说现在互联网上50%以上的流量都是由爬虫产生的，针对一些热门资源这一比例可以高达98%以上。针对这种情况，服务器会需要用户登录才能访问，而简单的登录验证就是将浏览器上的cookie和服务器session绑定起来。</p>
+<ol start="4">
+<li>验证码（<strong>C</strong>ompletely <strong>A</strong>utomated <strong>P</strong>ublic <strong>T</strong>uring test to tell <strong>C</strong>omputers and <strong>H</strong>umans <strong>A</strong>part，简称<strong>CAPTCHA</strong>）<br>
+<img src="https://xuhang.github.io/post-images/1733627453270.jpeg" alt="图片验证码开始显“威力”" loading="lazy"></li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="https://xuhang.github.io/post-images/1733627479206.jpeg" alt="图片验证码开始显“威力”" loading="lazy"></figure>
+<p>对于简单的字母和数字组成的验证码，可以通过自己训练模型来识别，或者使用第三方的打码平台来验证。<br>
+<img src="https://xuhang.github.io/post-images/1733627496743.jpeg" alt="captcha" loading="lazy"></p>
+<pre><code class="language-python">def bypassWithDama():
+    rec_url = &quot;http://pred.fateadm.com&quot;
+    tm = str(int(time.time()))
+    sign = CalcSign(pd_id, pd_key, tm)
+    asign = CalcSign(app_id, app_key, tm)
+    param = {
+        &quot;user_id&quot;: pd_id,
+        &quot;timestamp&quot;: tm,
+        &quot;appid&quot;: app_id,
+        &quot;sign&quot;:sign,
+        &quot;asign&quot;: asign,
+        &quot;predict_type&quot;: &quot;30600&quot;,
+        &quot;up_type&quot;: &quot;mt&quot;
+    }
+    url = rec_url + &quot;/api/capreg&quot;
+    img_data = open('/Users/xuhang/Desktop/captcha.jpeg', 'rb')
+    files = {
+        &quot;img_data&quot;: ('img_data', img_data)
+    }
+    header = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36'
+    }
+    rsp_data = requests.post(url, param, files=files, headers=header)
+    print('【斐斐打码】' + rsp_data.text)
+    return rsp_data.json()
+
+// 【斐斐打码】{&quot;RetCode&quot;:&quot;0&quot;,&quot;ErrMsg&quot;:&quot;&quot;,&quot;RequestId&quot;:&quot;20220303110050322d81ed0007a58386&quot;,&quot;RspData&quot;:&quot;{\&quot;result\&quot;: \&quot;yfx5\&quot;}&quot;}
+</code></pre>
+<p>对于像Google的CAPTCHA或者 Intuition的hCaptcha或者arkoselabs的FunCaptcha，这类复杂的验证码，需要识别图片中的物品并点击符合要求的图片，或者将图片旋转到正确的角度，可以使用打码平台的人工打码，由人工完成后将结果返回。</p>
+<ol>
+<li>带上登录后的cookie</li>
+</ol>
+<p>对于一般安全性不强的网站，并没有针对登录验证做太多的设计，所以爬虫很容易就能实现带cookie访问。</p>
+<pre><code class="language-python">header = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36'
+}
+url = 'https://store.steampowered.com/account/'
+rsp = requests.get(url, headers=header, verify=False)
+</code></pre>
+<p>将响应的文本复制到文件中保存为html格式，然后用浏览器打开，虽然是乱码，但是可以看到Login的按钮，说明是未登录的状态。登录steam之后将请求中的cookie复制出来，修改header后再次请求</p>
+<pre><code class="language-python">header = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36',
+    'Cookie': '...'
+}
+</code></pre>
+<p>可以从页面中找到该账号绑定的邮箱和余额等信息，说明登录成功。虽然可以爬到有限制的信息，但是爬虫和账号绑定了，这里代理就不起作用了，频繁爬取的话可能会导致被封号，这里就需要准备多个账号了，好在爬虫可以代替人工申请账号，只是成本会高一些。</p>
+<p>虽然上面的操作或多或少可以骗过服务器的检测，但是相比与真实的浏览器，爬虫程序还是会在很多方面存在差异。比如真是浏览器通常会有document，setInterval等对象，爬虫程序缺少这些对象可能会导致某些关键性步骤无法执行，从而被服务器识别出来。另外有些网站需要post提交请求数据，但是某些必需的参数又是经过各种复杂加密混淆之后的结果，有时候可能追踪一个参数忙碌了好几天，成功的爬取了一天，第二天网站改参数了。针对这种情况，我们可以使用真实的浏览器的爬取。</p>
+<blockquote>
+<p>如果是个人网站的站长，通常没有过多的精力来对抗爬虫，简单点的方法就是上面的随机生成验证码，然后加点干扰线。或者接入第三方的验证码平台，比如极验。但是验证码通常只用在有敏感操作的地方，不可能每个请求都要验证码，这时就可以使用网页防火墙之类的服务，通过检查客户端的引擎和一些特征来识别是不是爬虫，这样就可以拦截大部分的爬虫了。<br>
+<img src="https://xuhang.github.io/post-images/1733627531440.png" alt="" loading="lazy"></p>
+<p>该防火墙最开始是通过浏览器的引擎进行一些计算任务，只有计算正确才能成功跳转，但是已经有人成功用python模拟了计算过程，目前使用的是hCaptcha的验证码。<br>
+<img src="https://xuhang.github.io/post-images/1733627544953.png" alt="" loading="lazy"></p>
+</blockquote>
+<ol>
+<li>
+<p>headless浏览器</p>
+<figure data-type="image" tabindex="4"><img src="https://xuhang.github.io/post-images/1733627713500.png" alt="" loading="lazy"></figure>
+</li>
+</ol>
+<p><a href="https://phantomjs.org/">PhantomJS</a>是一个可以执行javascript脚本的无头网页浏览器，由于Chrome浏览器在17年开始支持无头模式，PhantomJS的作者已经停止维护了，推荐大家去使用Chrome。</p>
+<p>下面是PhantomJS的一个demo</p>
+<pre><code class="language-javascript">var page = require('webpage').create();
+page.open('http://www.google.com', function() {
+    setTimeout(function() {
+        page.render('google.png');
+        phantom.exit();
+    }, 200);
+});
+</code></pre>
+<p>这里推荐使用Selenium，这个工具可以驱动Chrome、Firefox、IE、Safari、Opera和PhantomJS，并且提供多种语言的版本，只需要安装相应的浏览器并指定浏览器的驱动路径即可。</p>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+from selenium import webdriver
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import ActionChains
+
+&quot;&quot;&quot;
+如果控制台出现乱码，尝试修改编码格式：chcp &lt;编码&gt;
+65001	UTF-8
+950		繁体中文
+936		GBK
+437		MS-DOS
+
+&quot;&quot;&quot;
+
+options = webdriver.ChromeOptions()
+# 以Headless模式启动
+# options.add_argument('headless')
+# 窗口大小（通过截图可以反映窗口大小）
+options.add_argument('window-size=1200x600')
+# 设置User-Agent
+options.add_argument('user-agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36')
+
+# 创建实例
+browser = webdriver.Chrome(chrome_options = options, executable_path='/Users/xuhang/Downloads/chromedriver')
+
+# 窗口最大化
+browser.maximize_window()
+
+# Part Ⅰ
+
+# 请求网址
+browser.get(url = &quot;https://www.smzdm.com&quot;)
+time.sleep(2)
+
+# 截图
+browser.save_screenshot('smzdm_1.png')
+
+# 下拉滑动页面 - 通过JS脚本
+browser.execute_script(&quot;window.scrollTo(10000, document.body.scrollHeight)&quot;)
+
+# 下拉滑动页面 - 通过模拟鼠标移动
+# from selenium.webdriver.support.wait import WebDriverWait
+# WebDriverWait(browser, 20, 0.5).until(lambda x: x.find_element_by_id('feed-main-list'))
+# actionChain = browser.find_element_by_css_selector(&quot;#feed-main-list li:last-child&quot;)
+# ActionChains(browser).move_to_element(actionChain).perform()
+browser.save_screenshot('smzdm_2.png')
+
+# 新开窗口打开百度首页
+browser.execute_script(&quot;window.open('https://www.baidu.com')&quot;)
+handlers = browser.window_handles
+# print(handlers)
+
+# 切换到第2个窗口
+browser.switch_to_window(handlers[1])
+
+# 在第2个窗口操作
+browser.find_element_by_id('kw').send_keys('selenium')
+browser.find_element_by_id('su').click()
+
+# 获取cookies
+cookies = browser.get_cookies()
+cookie = browser.get_cookie('BAIDUID')
+time.sleep(2)
+browser.save_screenshot('baidu_1.png')
+browser.switch_to_window(handlers[0])
+time.sleep(2)
+print(cookie)
+
+browser.quit()
+</code></pre>
+<p>到这里，配合上代理IP和账号登陆已经可以绕开大部分的网站验证了，但是即使用上了真实的浏览器，Selenium操控的浏览器还是会暴露出一部分特征。比如<code>window.navigator.webdriver</code>属性，这个属性是正常浏览器没有的，但是Chrome Headless里有，虽然可以通过参数关闭该属性，但是仍有其他属性会暴露出来。</p>
+<p>除了以上用到的Selenium，还有Pupperteer和Python版本的Pypperteer，器中Pupperteer是Google官方推出的基于Chrome DevTool protocol 协议的Nodejs包，通常在Selenium失败之后尝试使用Pupperteer，还是不行可以考虑开发Chrome的插件来爬，因为Chrome插件是运行在真正的浏览器上面，和平时使用的一样，它还能使用浏览器以往的缓存，不容易被识别出来。</p>
+<figure data-type="image" tabindex="5"><img src="%E5%9B%BE%E7%89%87%E7%B4%A0%E6%9D%90%E6%96%87%E4%BB%B6%E5%A4%B9/selenium%E5%92%8Cpuppeteer.png" alt="selenium和puppeteer" loading="lazy"></figure>
+<h1 id="四-扩展">四、扩展</h1>
+<p>反爬虫除了在服务端对可疑请求进行拦截，还可以在客户端增加爬虫的开发难度，其中就包括代码混淆、干扰调试、数据投毒、图片替换数据、字体乱序。</p>
+<ol>
+<li>
+<p>代码混淆</p>
+<figure data-type="image" tabindex="6"><img src="https://xuhang.github.io/post-images/1733627635187.png" alt="base62加密" loading="lazy"></figure>
+</li>
+</ol>
+<p>base62加密最明显的特征是以<code>eval(function(p,a,c,k,e,r))</code>开头，这样加密后的代码没有可读性，对于不熟悉此加密的人有一定难度，但是由于此方法最终要执行eval方法，所以只需要通过console.log将内容打印出来就是加密前的代码。</p>
+<ol>
+<li>干扰调试</li>
+</ol>
+<figure data-type="image" tabindex="7"><img src="https://xuhang.github.io/post-images/1733627650683.png" alt="image-20220308103521169" loading="lazy"></figure>
+<p>由于爬虫必须通过找出数据接口才能进行数据抓取，对于浏览器最基础的操作就是打开DevTools来分析请求和数据，所以一旦发现用户打开DevTools就可以做一些干扰来增加难度。比如<code>debugger;</code>本来是开发人员用来在调试代码时使用的命令，该命令会强制在此处打断点，所以可以对爬虫的开发人员进行一定的干扰。但是此方法也可以通过浏览器的停用断点使其失效。类似的方法还有检测到DevTools后立即删除所有关键的信息，这样也就不会暴露数据接口了。（微信读书用到了此方法）</p>
+<ol>
+<li>数据投毒</li>
+</ol>
+<p>此方法会有一定几率误伤到正常用户，所以使用得很少，而且使用也必须很谨慎。如果后台在检测到是爬虫之后，将原本正确的数据替换掉，让爬虫拿到的是毫无意义的数据，这样爬虫方就会因为这些异常数据做出错误的策略。</p>
+<ol start="4">
+<li>图片替换</li>
+</ol>
+<p>因为爬虫主要抓取的是文本类型的数据，比如价格、邮箱等，而爬虫处理文本数据的成本是很低的。如果将关键的数据用图片进行替换，图片上展示的是正常的数据，这样不会对正常访问的用户造成影响，只会增加爬虫获取数据的难度。</p>
+<ol start="5">
+<li>字体乱序</li>
+</ol>
+<p>这种方法和数据投毒的效果类似，但是不会误伤正常访问的用户。具体操作是在页面上加载乱序过的字体文件，但是乱序的规则后台是知道的，后台在返回数据的时候只要根据乱序的规则做一次反向的替换，就能让html的源数据和页面上展示的不一致，而爬虫是根据html源里的数据来进行处理的。</p>
+<p><a href="https://font.qqe2.com/">在线字体编辑器-JSON在线编辑器 (qqe2.com)</a></p>
+<figure data-type="image" tabindex="8"><img src="https://xuhang.github.io/post-images/1733627666181.png" alt="" loading="lazy"></figure>
+<p>这个字体文件里，数字7和1交换了顺序（为演示方便，只乱序了2个数字，通常是越乱越好），在页面上定义这个字体并指定文件路径，然后使用定义的字体。</p>
+<figure data-type="image" tabindex="9"><img src="https://xuhang.github.io/post-images/1733627679511.png" alt="" loading="lazy"></figure>
+<p>源文件里的数字是<code>1234567890</code>，页面上展示的是<code>7234561890</code>。</p>
+<figure data-type="image" tabindex="10"><img src="https://xuhang.github.io/post-images/1733627688770.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://xuhang.github.io/post-images/1733627698376.png" alt="" loading="lazy"></figure>
+<p>对于中文也是类似的，只不过中文字符过多，乱序之后映射关系复杂，会让维护变得困难。</p>
+<hr>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://xuhang.github.io/post/she-ji-mo-shi-he-kai-fa-yuan-ze/" class="post-title gt-a-link">
+                    设计模式和开发原则
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'Ov23lizzrJI1FmIDNwSB',
+    clientSecret: 'b78406f7fdde3291beae5dd04d395f79ff7aa4cd',
+    repo: 'xuhang.github.io',
+    owner: 'xuhang',
+    admin: ['xuhang'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">记录生活</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://xuhang.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
