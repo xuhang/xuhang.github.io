@@ -1,0 +1,899 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Electron 应用开发 | 1M3F 自留地</title>
+
+<link rel="shortcut icon" href="https://xuhang.github.io/favicon.ico?v=1733631133079">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://xuhang.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            1M3F 自留地
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="https://popgame.fun" class="menu gt-a-link" target="_blank">
+                            POPGAME
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1733631133079" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Electron 应用开发
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2024-12-08 ·
+                    </time>
+                    
+                        <a href="https://xuhang.github.io/tag/WetOSYckMA/" class="post-tags">
+                            # electron
+                        </a>
+                    
+                        <a href="https://xuhang.github.io/tag/wtiPysiBope/" class="post-tags">
+                            # app
+                        </a>
+                    
+                        <a href="https://xuhang.github.io/tag/85SfQ7PAmp-/" class="post-tags">
+                            # fily
+                        </a>
+                    
+                        <a href="https://xuhang.github.io/tag/cwZ4pi0gPZa/" class="post-tags">
+                            # note
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="一-了解electron">一、了解Electron</h2>
+<p>Electron 是由 Github 开发，用 HTML，CSS 和 JavaScript 来构建跨平台桌面应用程序的一个开源库。最初的时候是属于 Github 开源代码编辑器 Atom 的一部分，在 2014 春季这两个项目相继开源。</p>
+<!-- more -->
+<p><strong>里程碑事件</strong></p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>里程碑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2013 年 4 月</td>
+<td>Atom Shell 项目启动 。</td>
+</tr>
+<tr>
+<td>2014 年 5 月</td>
+<td>Atom Shell 被开源 。</td>
+</tr>
+<tr>
+<td>2015 年 4 月</td>
+<td>Atom Shell 被重命名为 Electron 。</td>
+</tr>
+<tr>
+<td>2016 年 5 月</td>
+<td>Electron 发布了 v1.0.0 版本 。</td>
+</tr>
+<tr>
+<td>2016 年 5 月</td>
+<td>Electron 构建的应用程序可上架 Mac App Store 。</td>
+</tr>
+<tr>
+<td>2016 年 8 月</td>
+<td>Windows Store 支持 Electron 构建的应用程序 。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Electron优点</strong>：</p>
+<ul>
+<li>跨平台，降低开发成本。</li>
+<li>强大的 npm 生态，提升开发效率</li>
+<li>简单易学的 JavaScript 语言，基于 Web 的桌面开发，不用再去学习 C# 或者 Swift，降低学习成本。</li>
+<li>苹果商店和微软商店都支持提交 Electron 应用程序。</li>
+<li>开发速度快，适合需要段时间内看到效果的应用开发</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>打包体积大</li>
+<li>Chromium比较吃内存</li>
+<li>跨平台并不代表一次编写，处处运行，需要在各个系统上测试、打包</li>
+<li>版本更新频繁，多个版本间有兼容性的问题</li>
+</ul>
+<p><strong>跨平台开发框架比较</strong></p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>支持语言</th>
+<th>优缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qt</td>
+<td>C++/Python</td>
+<td>优点：流行、稳定，内置自绘引擎，保证不同系统上界面一致，PyQt可以使用Python开发<br/>缺点：高分屏缩放显示问题，商业需授权，免费版本版权问题</td>
+</tr>
+<tr>
+<td>GTK</td>
+<td>C/C++/JS/Rust等</td>
+<td>优点：自绘引擎，提供大量系统相关API，商业授权友好<br/>缺点：只在Linux环境下流行，其他环境下开发困难</td>
+</tr>
+<tr>
+<td>wxWidgets</td>
+<td>C++</td>
+<td>优点：稳定、成熟<br/>缺点：没有自绘引擎，界面风格不统一</td>
+</tr>
+<tr>
+<td>FLTK</td>
+<td>C++</td>
+<td>优点：轻量，OpenGL引擎，有Rust绑定fltk-rs<br/>缺点：绘图API少</td>
+</tr>
+<tr>
+<td>Duilib</td>
+<td>C++</td>
+<td>优点：开源、有不少大厂使用<br/>缺点：只支持Windows、不支持高分屏、几乎没有系统级API，更新不及时，开发环境搭建麻烦</td>
+</tr>
+<tr>
+<td>Sciter</td>
+<td>C++/Rust/Go/Python等</td>
+<td>优点：精简，个人使用免费，内部有一个浏览器核心，自研脚本类似JS<br/>缺点：闭源，商业收费，不支持Flex布局，非官方绑定质量差，社区不成熟</td>
+</tr>
+<tr>
+<td>CEF</td>
+<td>C/C++/Go/Python/Java</td>
+<td>优点：基于Chromium，装机量大，支持HTML/CSS/JS特性<br/>缺点：体积大、几乎不提供系统及API，版本发布频繁</td>
+</tr>
+<tr>
+<td>MAUI</td>
+<td>C#</td>
+<td>优点：微软开发，有自绘引擎，支持桌面端和移动端<br/>缺点：暂无稳定版，界面有XAML描述</td>
+</tr>
+<tr>
+<td>Compose Multiplatform</td>
+<td>Kotlin</td>
+<td>优点：新，自绘引擎Skia（Goole）<br/>缺点：稳定欠缺，打包需要封装JRE</td>
+</tr>
+<tr>
+<td>flutter-desktop</td>
+<td>Dart</td>
+<td>优点：新，自绘引擎Skia，支持FFI<br/>缺点：不稳定，Dart大括号嵌套不友好，打包体积大</td>
+</tr>
+<tr>
+<td>webview2</td>
+<td>C#/C++</td>
+<td>优点：可以复用系统当中已存在的webview2二进制资源，打包体积小<br/>缺点：只支持Windows，闭源</td>
+</tr>
+<tr>
+<td>TAURI</td>
+<td>Rust</td>
+<td>优点：安装包小，新，开源，最近比较火<br/>缺点：新，不稳定，webview有的问题TARI都有</td>
+</tr>
+<tr>
+<td>NW.js（node-webkit）</td>
+<td>JS</td>
+<td>优点：开源，开发方便<br/>缺点：封装的系统级API不如Electron，生态不完善，API不稳定</td>
+</tr>
+<tr>
+<td>Electron</td>
+<td>JS</td>
+<td>优点：作者是NW.js原成员，Github，微软等大厂在用（github客户端，VSCode），生态完善，系统级API多<br/>缺点：打包体积大</td>
+</tr>
+<tr>
+<td>ImGui</td>
+<td>C++</td>
+<td>优点：对游戏开发者友好，支持多种引擎比如OpenGL，Directx，Vulkan等，打包体积小<br/>缺点：循环绘制整个界面，消耗CPU，有一些小问题</td>
+</tr>
+</tbody>
+</table>
+<p>如果是会C/C++，可选的框架就很多，可以根据需求选择最合适的框架，但是如果会一点JS，这里的Electron可能是比较合适的。首先是开源，开发语言JS相对大众，遇到问题也比较容易找到解决方案；其次是Electron的生态完善，有比较多的大厂在使用，比如微软的VS Code，Github官方的客户端GUI，Slack，Postman等，国内也有很多使用案例，比如迅雷X，utools等，更多的Electron 应用可以在 <a href="https://www.electronjs.org/apps">🔗这里</a> 发现。</p>
+<figure data-type="image" tabindex="1"><img src="https://xuhang.github.io/post-images/1733619671523.png" alt="Electron - www.electronjs.org" loading="lazy"></figure>
+<h2 id="二-使用electron开发应用">二、使用Electron开发应用</h2>
+<h3 id="问题">问题</h3>
+<p>在项目开发中，大部分时间是使用QQ作为沟通工具，那项目相关的需求文档、接口文档也基本上是通过QQ分享，时间久了在QQ的本地目录里就会有很多不同项目的相关文档，要找到就会很困难，而且很多文档名仅差几个字，很难区分每个文档属于哪个项目下的。</p>
+<h3 id="方案1">方案1</h3>
+<p>每次涉及新的需求，在用户目录下新建一个该项目的文件夹，每次有收到项目相关的文件就将文档存放到该路径下，再次使用时就在该目录下查找。</p>
+<figure data-type="image" tabindex="2"><img src="https://xuhang.github.io/post-images/1733619772394.png" alt="" loading="lazy"></figure>
+<h3 id="方案2">方案2</h3>
+<p>方案1虽然能将文件分项目存储，但是每个文件的内容很难通过文件获取；每次进入项目目录需要打开资源管理器，进入用户目录，选择相关项目，步骤繁琐；……这里我们开发一个专门解决这个痛点的软件，用来管理项目相关的文件，该软件有以下功能：</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-181564"><label class="task-list-item-label" for="task-item-181564"> 分项目管理所属文件</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8870626"><label class="task-list-item-label" for="task-item-8870626"> 以易读的方式显示文件的加入时间</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9213854"><label class="task-list-item-label" for="task-item-9213854"> 支持直接从聊天软件对话框中拖拽文件到项目中</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5573050"><label class="task-list-item-label" for="task-item-5573050"> 如果其他人需要，可以将项目所有文件打包分享</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-447974"><label class="task-list-item-label" for="task-item-447974"> 可以对每个文件注释，标注该文件的作用、内容等</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8298898"><label class="task-list-item-label" for="task-item-8298898"> 快速定位到文件和打开文件</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1143978"><label class="task-list-item-label" for="task-item-1143978"> 针对每个项目内嵌一个Kanban来记录具体任务的完成情况</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1647858"><label class="task-list-item-label" for="task-item-1647858">  根据不同的命名规则自动关联到文件的最新版本</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3111459"><label class="task-list-item-label" for="task-item-3111459"> 加入沟通功能，可以快速与小组成员分享文件</label></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Windows UI</th>
+<th>MacOS UI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://xuhang.github.io/post-images/1733619845296.png" alt="" loading="lazy"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="开发">开发</h3>
+<p>由于Electron版本更新较快，接口和功能可能会有较大的变动，建议参考官方文档<a href="https://www.electronjs.org/zh/docs/latest/">🔗官方文档</a>（有中文）。</p>
+<h4 id="0-electron中常用的模块"><strong>0. Electron中常用的模块</strong></h4>
+<p>可以从命名规则中得知，如果引入的是类，用户是可以创建多个实例对象的，如果引入的是对象，则是Electron已经创建好的，且一个应用里只有一个实例。</p>
+<pre><code class="language-javascript">const { 
+    app, // 对该应用程序的引用，一个应用可以包含0-多个窗口
+    BrowserWindow, // 窗口类
+    Menu, // 菜单类
+    Tray, // 任务栏图标
+    Notification, // 通知
+    shell, // Shell对象，执行系统命令
+    ipcMain, // IpcMain对象，用来触发和监听消息事件
+    globalShortcut, // GlobalShortcut对象，用来处理全局快捷键的绑定和解绑
+    screen, // Screen对象，用来获取显示器相关数据
+    nativeImage // NativeImage对象，用来生成和获取图片
+} = require('electron');
+</code></pre>
+<h4 id="1-单实例"><strong>1. 单实例</strong></h4>
+<p>单实例是为了保证只有一个在工作，防止误操作多次双击后启动多个实例。这里多个实例没有意义，所以限制多实例的生成，如果重复创建app对象则直接退出。</p>
+<pre><code class="language-javascript">const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
+    app.quit()
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) =&gt; {
+            // 当运行第二个实例时,将会聚焦到myWindow这个窗口
+            if (win) {
+                if (win.isMinimized()) win.restore()
+                win.focus()
+            }
+        })
+        // app 启动创建窗口
+    app.on('ready', createWindow);
+}
+</code></pre>
+<h4 id="2-自定义协议"><strong>2. 自定义协议</strong></h4>
+<p>在浏览器中常用的协议有<code>http</code>、<code>https</code>、<code>file</code>等，自定义协议可以让我们通过在浏览器访问自定义schema打开我们的应用，并执行指定操作。这里我们以软件名称<code>fily</code>作为协议名称，后面的uri路径为要访问的项目名称(目前支持英文字母和数字的名称，中文需要额外的编解码)。</p>
+<pre><code class="language-http">fily://project-name
+</code></pre>
+<p>实现方式MacOS和Windows有区别，MacOS通过<code>app.setAsDefaultProtocolClient</code>设置默认协议，Windows通过第二实例打开。</p>
+<pre><code class="language-javascript">// MacOS
+if (process.defaultApp) {
+    if (process.argv.length &gt;= 2) {
+        app.setAsDefaultProtocolClient('fily', process.execPath, [path.resolve(process.argv[1])])
+    }
+} else {
+    app.setAsDefaultProtocolClient('fily')
+}
+
+app.on('open-url', (event, url) =&gt; {
+    openUrl(url);
+})
+
+//Windows
+const gotTheLock = app.requestSingleInstanceLock()
+if (!gotTheLock) {
+    app.quit()
+} else {
+    app.on('second-instance', (event, commandLine, workingDirectory) =&gt; {
+            // 当运行第二个实例时,将会聚焦到myWindow这个窗口
+            if (win) {
+                if (win.isMinimized()) win.restore()
+                win.focus()
+                let lastCommand = commandLine[commandLine.length - 1];  // ①
+                if (lastCommand.indexOf('fily://') === 0) {             // ②
+                    openUrl(lastCommand)                                // ③
+                }
+            }
+        })
+        // app 启动创建窗口
+    app.on('ready', createWindow);
+}
+</code></pre>
+<h4 id="3-进程间通信"><strong>3. 进程间通信</strong></h4>
+<p>Electron分主进程和渲染进程，主程序 (main process)，它运行在 Node.js环境里，负责控制应用的生命周期、显示原生界面、执行特殊操作并管理渲染器进程 (renderer processes)。应用中的每个页面都在一个单独的进程中运行，我们称这些进程为 渲染器(renderer) 。 渲染器也能访问前端开发常会用到的 API和工具，例如用于打包并压缩代码的webpack，还有用于构建用户界面的 React 。</p>
+<table>
+<thead>
+<tr>
+<th>通信方向</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>主进程监听事件</td>
+<td><code>ipcMain.on(EVENT-NAME, (event, data) =&gt; {})</code></td>
+</tr>
+<tr>
+<td>主进程向渲染进程发送通知</td>
+<td><code>win.webContents.send(EVENT-NAME, {})</code></td>
+</tr>
+<tr>
+<td>渲染进程监听事件</td>
+<td><code>ipcRenderer.on(EVENT-NAME, (event, data) =&gt; {})</code></td>
+</tr>
+<tr>
+<td>渲染进程向主进程发送通知</td>
+<td><code>ipcRenderer.send(EVENT-NAME, {})</code></td>
+</tr>
+</tbody>
+</table>
+<p>主进程和渲染进程主要负责的功能范围不同，进程间的通信通过事件监听和消息通知来交互完成。</p>
+<blockquote>
+<p>Electron 的主进程是一个拥有着完全操作系统访问权限的 Node.js 环境。 除了 Electron 模组之外，你也可以使用 Node.js 内置模块 和所有通过 npm 安装的软件包。另一方面，出于安全原因，渲染进程默认跑在网页页面上，而并非 Node.js里。为了将 Electron 的不同类型的进程桥接在一起，我们需要使用被称为 预加载 的特殊脚本。</p>
+</blockquote>
+<h4 id="4-创建窗口"><strong>4. 创建窗口</strong></h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://xuhang.github.io/post-images/1733619943936.png" alt="" loading="lazy"></td>
+<td>Windows   UI</td>
+</tr>
+<tr>
+<td><img src="https://xuhang.github.io/post-images/1733619968189.png" alt="" loading="lazy"></td>
+<td>MacOS UI</td>
+</tr>
+</tbody>
+</table>
+<p>软件打开之后需要展示给用户使用的界面，ELectron封装了不同操作系统的UI界面，所以在不同系统上使用会有不同的风格。为了统一风格，我们去掉窗口的边框，使用HTML+CSS绘制一套统一的界面。可以从上面的对比图看出，Windows和MacOS上的顶部titleBar的样式是有区别的，Windows的titleBar会显示菜单，MacOS是空白的，因为MacOS的菜单是当程序窗口是活动窗口时，在显示器左上角会显示当前程序的菜单，所以两个平台的菜单绑定是有区别的。</p>
+<figure data-type="image" tabindex="3"><img src="https://xuhang.github.io/post-images/1733620004039.png" alt="" loading="lazy"></figure>
+<pre><code class="language-javascript">// 创建窗口要在app启动完成之后开始
+app.on('ready', createWindow);
+
+function createWindow() {
+    // 读取package.json文件中的属性
+    var package = require('./package.json')
+    console.log('starting ' + package.name + ' ' + package.version)
+
+    // 隐藏菜单 Menu.setApplicationMenu(null)
+    // 这里菜单仅对MacOS有效，因为Windows隐藏边框之后没有菜单栏
+    const appMenu = Menu.buildFromTemplate(appMenuTemplate);
+    Menu.setApplicationMenu(appMenu)
+
+    // 创建浏览器窗口并设置宽高
+    win = new BrowserWindow({
+        width: 1200,
+        height: 800,
+        titleBarStyle: 'customButtonsOnHover',
+        icon: __dirname + './img/fily.png',
+        maximizable: false,
+        minimizable: false,
+        fullscreenable: false,
+        frame: false, // 是否有边框
+        // resizable: true,        // 是否可调整大小
+        transparent: true, //是否透明
+        webPreferences: { // 新版Electron添加了一些安全限制，这里需要设置
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            contextIsolation: false
+        }
+    })
+    remoteMain.initialize()
+    remoteMain.enable(win.webContents);
+
+    // MacOS底部的Dock栏图标
+    if (systemType === &quot;Darwin&quot;) {
+        app.dock.setIcon(path.join(__dirname, './img/icon_512x512.png'));
+        // 设置Dock菜单
+        const dockMenu = Menu.buildFromTemplate(dockMenuTempalte);
+        app.dock.setMenu(dockMenu);
+    }
+
+    // 加载页面 -- 向用户展示的界面
+    win.loadFile('./page/projectRelatedFiles.html')
+
+    // Windows 任务栏图标菜单（右下角） / MacOS任务栏图片（右上角）
+    // tray = new Tray(path.join(__dirname, &quot;./img/fily.png&quot;));
+    const trayImage = nativeImage.createFromPath(path.join(__dirname, &quot;./img/icons.iconset/file20Template.png&quot;));
+    trayImage.resize({ width: 16, height: 16 })
+    trayImage.setTemplateImage(true);
+    tray = new Tray(trayImage);
+    const contextMenu = Menu.buildFromTemplate([
+        { label: '退出', click: function() { app.quit() } }
+    ])
+    tray.setToolTip('Fily - File manager for you!')
+    tray.setContextMenu(contextMenu)
+
+    // 添加window关闭触发事件
+    win.on('close', () =&gt; {
+        win = null;
+        app.quit();
+    });
+
+    win.setProgressBar(0.7);
+}
+
+</code></pre>
+<h4 id="5-添加快捷键注册"><strong>5. 添加快捷键注册</strong></h4>
+<p>可以通过注册全局快捷键快速执行某个操作或者在菜单项里对指定的菜单绑定快捷键。</p>
+<pre><code class="language-javascript">// 注册全局快捷键-退出应用
+globalShortcut.register('Ctrl+W', () =&gt; {
+    win = null;
+    app.quit();
+});
+// 全局快捷键-打开开发中工具
+globalShortcut.register('Ctrl+Shift+I', () =&gt; {
+    win.webContents.toggleDevTools()
+})
+
+// 通过构建菜单绑定快捷键执行菜单操作
+const appMenuTemplate = [{
+    label: 'Projects',
+    submenu: [{
+        label: 'New Project',
+        accelerator: 'Cmd+N',
+        click: () =&gt; {
+            win.webContents.send('new-project-dialog', {})
+        }
+    }, {
+        label: 'Rename Project'
+    }, {
+        label: 'Delete Project'
+    }, {
+        type: 'separator'
+    }, {
+        label: 'Archive'
+    }]
+}, {
+    label: 'Files',
+    submenu: [{
+        label: 'Import File'
+    }, {
+        label: 'Import Folder'
+    }]
+}]
+</code></pre>
+<h4 id="6-添加进度条"><strong>6. 添加进度条</strong></h4>
+<p>Windows和MacOS都可以在任务（Dock）栏的图标那里显示一个进度条，通常可以用来显示下载进度或者任务完成进度。</p>
+<table>
+<thead>
+<tr>
+<th>Windows UI</th>
+<th>MacOS UI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://xuhang.github.io/post-images/1733620043980.png" alt="" loading="lazy"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-javascript">// 这里的进度条在70%的进度
+win.setProgressBar(0.7);
+</code></pre>
+<h4 id="7-任务栏预览快捷操作仅windows"><strong>7. 任务栏预览快捷操作（仅Windows）</strong></h4>
+<p>在任务栏的预览视图那里可以设置快捷操作键，这里我们通过添加两个按钮用于访问“前一个”和“后一个”项目。</p>
+<figure data-type="image" tabindex="4"><img src="https://xuhang.github.io/post-images/1733620060775.png" alt="" loading="lazy"></figure>
+<pre><code class="language-javascript">// 主线程
+win.setThumbarButtons([{
+    tooltip: '上一张',
+    icon: path.join(__dirname, './resource/icos/pre.ico'),
+    click() { switchThumbImage(-1) }
+}, {
+    tooltip: '下一张',
+    icon: path.join(__dirname, './resource/icos/next.ico'),
+    click() { switchThumbImage(1) }
+}])
+
+function switchThumbImage(delta) {
+    if (delta &gt; 0) {
+        win.webContents.send('show-next-project', {})
+    } else {
+        win.webContents.send('show-prev-project', {})
+    }
+}
+
+// 渲染进程
+ipcRenderer.on('show-next-project', (event, message) =&gt; {
+    // document.getElementById('gallery_image').setAttribute('src', message['src']);
+    let curProj = $('.projlist ul li.active')
+    let nextProj;
+    if (!!curProj[0]) {
+        nextProj = curProj.next();
+        if (!nextProj[0]) {
+            nextProj = $('.projlist ul li').first()
+        }
+    } else {
+        nextProj = $('.projlist ul li').first();
+    }
+    nextProj.click();
+})
+ipcRenderer.on('show-prev-project', (event, message) =&gt; {
+    let curProj = $('.projlist ul li.active')
+    let prevProj;
+    if (!!curProj[0]) {
+        prevProj = curProj.prev();
+        if (!prevProj[0]) {
+            prevProj = $('.projlist ul li').last()
+        }
+    } else {
+        prevProj = $('.projlist ul li').last();
+    }
+    prevProj.click();
+})
+</code></pre>
+<h4 id="8-通知"><strong>8. 通知</strong></h4>
+<p>这里监听右上角的关闭按钮，点击关闭之后会弹出通知，并延迟1s后退出应用。</p>
+<table>
+<thead>
+<tr>
+<th>Windows UI</th>
+<th>MacOS UI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://xuhang.github.io/post-images/1733620099033.png" alt="" loading="lazy"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-javascript">ipcMain.on('close-window', (event, data) =&gt; {
+    if (!Notification.isSupported()) {
+        console.log('当前系统不支持通知');
+    }
+    app.setAppUserModelId(&quot;我的Electorn示例&quot;)
+    const notification = {
+        appId: &quot;com.xuhang.electron.demo&quot;,
+        icon: path.join(__dirname, './img/icon_512x512.png'),
+        title: '正在关闭……',
+        body: 'Bye ヾ(•ω•`)o'
+    }
+    new Notification(notification).show()
+
+    setTimeout(() =&gt; {
+        console.log('fily is exiting ...')
+        app.quit();
+    }, 1000);
+});
+</code></pre>
+<h4 id="9-数据存储"><strong>9. 数据存储</strong></h4>
+<p>项目列表和项目相关的文件关联关系需要持久化才能保证数据不丢失，通常可以选择将数据保存到远程数据库，但是这样必须要有一个实时在线的服务。也可以选择数据保存在本地，这样既能保证数据实时可用，也能保证数据的安全性，一来也是因为数据没有在线访问的必要。</p>
+<p>离线存储有几种可选方案：</p>
+<ol>
+<li>利用浏览器的localStorage存储，优点是浏览器原生支持，Electron本身就包含了Chromium，缺点是如果清空浏览器缓存数据也丢失了。</li>
+<li>利用Electron的文件读写API，自定义存储格式和存储路径，将数据保存到本地文件，优点是没有第三方依赖，缺点是需要自己实现数据的序列化与反序列化。</li>
+<li>利用第三方库，如lowdb将数据以JSON格式存储在本地文件，优点是提供了增删改查的API，缺点是有学习成本。</li>
+<li>集成SQLite，优点是数据有各种工具可以读取，也可以通过网盘将数据进行同步，SQLite也比较稳定成熟，缺点是Electron对SQLite的集成比较复杂，打包后体积也会变大。</li>
+</ol>
+<p>综合各种方案的优劣，我们前期需要快速出一个可用的版本，所以选择了lowdb。</p>
+<h4 id="10-引入jquery"><strong>10. 引入jQuery</strong></h4>
+<p>前端开发的发展速度很快，可能两三年技术路线就会更新迭代，jQuery虽然过时了，但是对于非前端开发来说还是相对熟悉的框架，所以为了尽可能简化开发这里还是使用jQuery。</p>
+<p>Electron默认启用了Node.js的require模块，而jQuery等新版本框架为了支持commondJS标准，当Window中存在require时，会启用模块引入的方式。这里主要针对jQuery1.11.1及以后的版本。</p>
+<pre><code class="language-javascript">&lt;script src=&quot;../script/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    if (typeof module === 'object') {
+        window.jQuery = window.$ = module.exports;
+    }
+&lt;/script&gt;
+</code></pre>
+<p>由于Electron和ES6对于模块的导入导出采用了不同的方式，所以在引用JS文件时很容出现报错。关于各种Javascript运行时环境下的模块导入导出可以参见 <a href="https://mp.weixin.qq.com/s?__biz=MzIzMDE5NTQyMQ==&amp;mid=2247484053&amp;idx=1&amp;sn=dec6d77da1de255d1b9a92289c3a3df3">🔗这篇文章</a></p>
+<h4 id="11-开发者工具"><strong>11. 开发者工具</strong></h4>
+<p>为了方便对页面进行调试，需要为每个窗口添加打开/关闭开发者工具的快捷键监听事件。在页面的js文件中为window对象添加事件监听器并在按键为<code>Ctrl+Shift+I</code>是打开/关闭开发者工具，针对当前活动窗口的快捷键才会生效 。</p>
+<pre><code class="language-javascript">window.addEventListener('keydown', (event) =&gt; {
+    if (event.ctrlKey &amp;&amp; event.shiftKey &amp;&amp; event.key === 'I') {
+        remote.getCurrentWindow().toggleDevTools();
+    }
+})
+</code></pre>
+<h4 id="12-聊天功能"><strong>12. 聊天功能</strong></h4>
+<p>在界面左上角重载按钮的旁边有个聊天图标，点击会在屏幕右侧出现一个透明窗口，该窗口实现了鼠标点击穿透，但同时也保持窗口置顶，最下方的文字输入区域设置透明度0.6，但是为了能输入文字，该区域为点击不穿透。该聊天功能使用腾讯的IM云服务，每个打开该聊天界面的终端会自动申请加入一个开放群，目前仅实现了文字聊天功能。</p>
+<table>
+<thead>
+<tr>
+<th>Windows UI</th>
+<th>MacOS UI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://xuhang.github.io/post-images/1733620151597.png" alt="" loading="lazy"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="三-打包发布">三、打包发布</h2>
+<p>开发完成后将代码打包并生成系统安装包。之前主要使用<code>electron-package</code>和<code>electron-builder</code>来打包，目前Electron官方推荐使用<code>electron-forge</code>，后者针对发布和更新会更方便一点。</p>
+<p>electron-builder在package.json中添加如下参数：</p>
+<pre><code class="language-json">&quot;build&quot;: {
+    &quot;productName&quot;: &quot;fily&quot;,
+    &quot;appId&quot;: &quot;com.xuhang.electron.demo&quot;,
+    &quot;copyright&quot;: &quot;Copyright © 2021-2022 xu&quot;,
+    &quot;directories&quot;: {
+        &quot;output&quot;: &quot;build&quot;
+    },
+    &quot;nsis&quot;: {
+        &quot;oneClick&quot;: false,
+        &quot;allowElevation&quot;: true,
+        &quot;allowToChangeInstallationDirectory&quot;: true,
+        &quot;installerIcon&quot;: &quot;./img/icon.ico&quot;,
+        &quot;uninstallerIcon&quot;: &quot;./img/icon.ico&quot;,
+        &quot;installerHeaderIcon&quot;: &quot;./img/icon.ico&quot;,
+        &quot;createDesktopShortcut&quot;: true,
+        &quot;createStartMenuShortcut&quot;: true,
+        &quot;shortcutName&quot;: &quot;Fily&quot;
+    },
+    &quot;win&quot;: {
+        &quot;icon&quot;: &quot;./img/icon.ico&quot;,
+        &quot;target&quot;: [
+            {
+                &quot;target&quot;: &quot;nsis&quot;,
+                &quot;arch&quot;: [
+                    &quot;ia32&quot;
+                ]
+            }
+        ]
+    },
+    &quot;dmg&quot;: {
+        &quot;background&quot;: &quot;media/images/dmg-bg.png&quot;,
+        &quot;icon&quot;: &quot;media/images/icon.icns&quot;,
+        &quot;iconSize&quot;: 100,
+        &quot;sign&quot;: false,
+        &quot;contents&quot;: [
+            {
+                &quot;x&quot;: 112,
+                &quot;y&quot;: 165
+            },
+            {
+                &quot;type&quot;: &quot;link&quot;,
+                &quot;path&quot;: &quot;/Applications&quot;,
+                &quot;x&quot;: 396,
+                &quot;y&quot;: 165
+            }
+        ]
+    },
+    &quot;mac&quot;: {
+        &quot;target&quot;: [
+            &quot;dmg&quot;
+        ],
+        &quot;icon&quot;: &quot;./img/Icon.icns&quot;,
+        &quot;hardenedRuntime&quot;: true,
+        &quot;identity&quot;: null,
+        &quot;entitlements&quot;: &quot;electron-builder/entitlements.plist&quot;,
+        &quot;entitlementsInherit&quot;: &quot;electron-builder/entitlements.plist&quot;,
+        &quot;provisioningProfile&quot;: &quot;electron-builder/comalibabaslobs.provisionprofile&quot;
+    },
+    &quot;pkg&quot;: {
+        &quot;isRelocatable&quot;: false,
+        &quot;overwriteAction&quot;: &quot;upgrade&quot;
+    },
+    &quot;mas&quot;: {
+        &quot;icon&quot;: &quot;./img/Icon.icns&quot;,
+        &quot;hardenedRuntime&quot;: true,
+        &quot;entitlements&quot;: &quot;electron-builder/entitlements.mas.plist&quot;,
+        &quot;entitlementsInherit&quot;: &quot;electron-builder/entitlements.mas.plist&quot;
+    }
+}
+</code></pre>
+<p>electron-forge添加如下参数：</p>
+<pre><code class="language-json">&quot;config&quot;: {
+    &quot;forge&quot;: {
+        &quot;packagerConfig&quot;: {},
+        &quot;makers&quot;: [
+            {
+                &quot;name&quot;: &quot;@electron-forge/maker-squirrel&quot;,
+                &quot;config&quot;: {
+                    &quot;name&quot;: &quot;fily&quot;
+                }
+            },
+            {
+                &quot;name&quot;: &quot;@electron-forge/maker-zip&quot;,
+                &quot;platforms&quot;: [
+                    &quot;darwin&quot;
+                ]
+            },
+            {
+                &quot;name&quot;: &quot;@electron-forge/maker-deb&quot;,
+                &quot;config&quot;: {}
+            },
+            {
+                &quot;name&quot;: &quot;@electron-forge/maker-rpm&quot;,
+                &quot;config&quot;: {}
+            }
+        ]
+    }
+}
+</code></pre>
+<p>然后配置script脚步指定指定的任务：</p>
+<pre><code class="language-json">&quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+    &quot;start&quot;: &quot;electron-forge start&quot;,
+    &quot;package&quot;: &quot;electron-forge package&quot;,
+    &quot;dist&quot;: &quot;npm run package &amp;&amp; electron-builder build&quot;,
+    &quot;make&quot;: &quot;electron-forge make&quot;
+}
+</code></pre>
+<h2 id="四-源码">四、源码</h2>
+<p>该实验项目开源，代码存放在 <a href="https://github.com/xuhang/fily.git">🔗Github</a></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://xuhang.github.io/post/mysql45-jiang-bi-ji/" class="post-title gt-a-link">
+                    MySQL45 讲笔记
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'Ov23lizzrJI1FmIDNwSB',
+    clientSecret: 'b78406f7fdde3291beae5dd04d395f79ff7aa4cd',
+    repo: 'xuhang.github.io',
+    owner: 'xuhang',
+    admin: ['xuhang'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">记录生活</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/xuhang" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://xuhang.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
