@@ -1,0 +1,491 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Kafka 核心技术与实战笔记 | 1M3F 自留地</title>
+
+<link rel="shortcut icon" href="https://xuhang.github.io/favicon.ico?v=1733748013622">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://xuhang.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1501730606981885"
+     crossorigin="anonymous"></script>
+     <meta name="google-adsense-account" content="ca-pub-1501730606981885">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            1M3F 自留地
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="https://popgame.fun" class="menu gt-a-link" target="_blank">
+                            POPGAME
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1733748013622" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    Kafka 核心技术与实战笔记
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2024-12-08 ·
+                    </time>
+                    
+                        <a href="https://xuhang.github.io/tag/UyO6XEvkoC/" class="post-tags">
+                            # kafka
+                        </a>
+                    
+                        <a href="https://xuhang.github.io/tag/YAtQZtegtFw/" class="post-tags">
+                            # geektime
+                        </a>
+                    
+                        <a href="https://xuhang.github.io/tag/cwZ4pi0gPZa/" class="post-tags">
+                            # note
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <h2 id="术语">术语</h2>
+<p>发布订阅的对象是<mark>主题（Topic）</mark>，向主题发布消息的客户端应用程序称为<mark>生产者（Producer）</mark>，订阅主题消息的客户端应用程序称为<mark>消费者（Consumer）</mark>，生产者和消费者统称为<mark>客户端（Clients）</mark>。</p>
+<p>Kafka 的服务器端由被称为 <mark>Broker</mark> 的<mark>服务进程</mark>构成，即一个 Kafka 集群由多个 Broker 组成，Broker 负责接收和处理客户端发送过来的请求，以及对消息进行持久化。虽然多个Broker可以同时运行在一台机器上，但是通常将不同的Broker分散在不同机器上，以保证高可用。</p>
+<p>实现高可用的另一个手段就是<mark>备份机制（Replication）</mark>。备份的思想很简单，就是把相同的数据拷贝到多台机器上，而这些相同的数据拷贝在 Kafka 中被称为<mark>副本（Replica）</mark>。副本的数量是可以配置的，这些副本保存着相同的数据，但却有不同的角色和作用。Kafka 定义了两类副本：<mark>领导者副本（Leader Replica）<mark>和</mark>追随者副本（Follower Replica）</mark>。前者对外提供服务，这里的对外指的是与客户端程序进行交互；而后者只是被动地追随领导者副本而已，不能与外界进行交互。</p>
+<!-- more -->
+<p>副本机制可以保证数据的持久化或消息不丢失，但没有解决伸缩性的问题（Scalability），如果领导者副本积累了太多的数据以至于单台 Broker 机器都无法容纳了，此时就需要把数据分割成多份保存在不同的 Broker 上。这种机制就是所谓的<mark>分区（Partitioning）</mark>。</p>
+<p>Kafka 中的分区机制指的是将每个主题划分成多个<mark>分区（Partition）</mark>，每个分区是一组<mark>有序</mark>的消息日志，生产者生产的每条消息只会被发送到一个分区中。</p>
+<p>**副本是在分区这个层级定义的。**每个分区下可以配置若干个副本，其中只能有 1 个领导者副本和 N-1 个追随者副本。生产者向分区写入消息，每条消息在分区中的位置信息由一个叫==位移（Offset）==的数据来表征。分区位移总是从 0 开始，单调递增且不会改变。</p>
+<p>Kafka 使用==消息日志（Log）<mark>来保存数据，一个日志就是磁盘上一个</mark><strong>只能追加写</strong>（Append-only）<mark>消息的物理文件。因为只能追加写入，故避免了缓慢的随机 I/O 操作，改为性能较好的顺序I/O 写操作，这也是实现 Kafka 高吞吐量特性的一个重要手段。不过如果你不停地向一个日志写入消息，最终也会耗尽所有的磁盘空间，因此 Kafka 必然要定期地删除消息以回收磁盘。怎么删除呢？简单来说就是通过</mark>日志段（Log Segment）==机制。在 Kafka 底层，一个日志又近一步细分成多个日志段，消息被追加写到当前最新的日志段中，当写满了一个日志段后，Kafka 会自动切分出一个新的日志段，并将老的日志段封存起来。Kafka 在后台还有定时任务会定期地检查老的日志段是否能够被删除，从而实现回收磁盘空间的目的。</p>
+<p><mark>消费者组（Consumer Group）<mark>指的是多个消费者实例共同组成一个组来消费一个主题，主题中的每个分区只会被组内的一个消费者实例消费。这样可以有效提升消费端的吞吐量。此外，Kafka如果检测到消费者组内某个实例挂了，会把这个实例之前负责的分区转移给其他消费者，这个过程就是</mark>重平衡（Rebalance）</mark>。</p>
+<figure data-type="image" tabindex="1"><img src="https://xuhang.github.io/post-images/1733626924845.png" alt="" loading="lazy"></figure>
+<p>当数据在网络和磁盘进行传输时，避免昂贵的内核态数据拷贝，Kafka使用了Linux平台实现的==零拷贝（Zero Copy）==技术。</p>
+<p>Kafka版本演进</p>
+<ul>
+<li>0.8 引入副本机制，至此成为一个真正意义上完备的分布式高可靠消息队列解决方案，此版本API需要指定ZooKeeper地址；</li>
+<li>0.8.2.0 社区版引入新版本Producer API，此版本需要指定Broker地址；</li>
+<li>0.9.0.0 增加基础的安全认证/权限，使用Java重写消费者API，引入Kafka Connect组件，此版本Producer API比较稳定；</li>
+<li>0.10.0.0 里程碑，引入Kafka Stream；</li>
+<li>0.10.2.2 新版本Consumer API，修复了可能导致Producer API性能降低的bug；</li>
+<li>0.11.0.0 提供幂等性Producer API和事务 API，对消息格式做了重构。</li>
+</ul>
+<h2 id="集群参数配置">集群参数配置</h2>
+<p><strong>Broker端参数</strong></p>
+<pre><code class="language-properties">log.dirs: Broker需要使用的文件目录路径，逗号分割，最好是不同物理磁盘上的目录，能提高吞吐量
+log.dir: Broker需要使用的单个文件路径
+zookeeper.connect: zk地址
+# chroot zk别名，加在zookeeper.connect参数最后，不用每个zk地址都加
+# zookeeper.connect=zk1:2181,zk2:2181,zk3:2181/kafka1
+listeners: 协议名称://主机:端口, 协议名称://主机:端口... 告诉外部连接着通过什么协议访问主机名和端口开放的kafka
+advertised.listeners: 这组监听器是Broker用于对外发布的（通常是双网卡的外网IP）
+# 协议可以自定义，如果自定义协议名称，必须用listener.security.protocol.map参数指定具体底层安全协议
+listener.security.protocol.map=CONTROLLER:PLAINTEXT :表示CONTROLLER自定义协议底层使用明文不加密传输
+auto.create.topics.enable: 是否允许自动创建Topic
+unclean.leader.election.enable: 是否允许Unclean Leader（落后很多的分区副本）选举
+auto.leader.rebalance.enable: 是否允许定期进行Leader选举
+log.retention.{hour|minutes|ms}: 控制一条消息数据被保存的时间
+log.retention.bytes: Broker为消息保存的总磁盘容量大小
+message.max.bytes: 控制Broker能够接收的最大消息大小
+</code></pre>
+<p><strong>Topic级别参数</strong></p>
+<blockquote>
+<p>Topic 级别参数会覆盖全局Broker 参数的值</p>
+</blockquote>
+<pre><code class="language-properties">retention.ms: 该Topic消息被保存的时长，默认7days
+retention.bytes: 为该Topic预留的磁盘空间，默认-1，无限制
+max.message.bytes: Broker能够正常接收该Topic的最大消息大小
+</code></pre>
+<p><strong>JVM参数</strong></p>
+<pre><code class="language-properties">KAFKA_HEAP_OPTS: 堆大小
+KAFKA_JVM_PERFORMANCE_OPTS: GC参数
+</code></pre>
+<p><strong>操作系统参数</strong></p>
+<pre><code class="language-shell">ulimit -n 1000000: Linux操作系统能打开的最大文件描述符数量，尽可能大
+</code></pre>
+<p>操作系统其他参数包括swap调优和Flush落盘时间，swap如果设置为0，当物理内存耗尽，操作系统会随机选择一个进程 kill 掉，无法观测到 Broker 性能的下降和预警。Kafka只要将数据写入到操作系统的页缓存就可以任务消息写入成功，之后由操作系统定期将脏数据落盘到磁盘上。鉴于Kafka提供的多副本冗余机制，可以稍微将定期刷盘的间隔增大。</p>
+<h2 id="分区机制">分区机制</h2>
+<p><strong>分区策略</strong>（由生产者决定消息发送到主题的哪个分区）</p>
+<ul>
+<li>自定义分区策略：通过生产者端<code>partitioner.class</code>参数指定分区策略，需要指定一个实现<code>org.apache.kafka.clients.producer.Partitioner</code>接口的类并实现其中的<code>partition()</code>方法。</li>
+<li>轮询策略（Round-robin）：顺序分配，默认分区策略；</li>
+<li>随机策略（Randomness）：随机地将消息放到某个分区中；</li>
+<li>按消息键保序策略（Key-ordering）：同一个key的所有消息进入相同的分区</li>
+</ul>
+<h2 id="压缩">压缩</h2>
+<p>压缩可能发生在两个地方：生产者和Broker端</p>
+<p>生产者程序中配置<code>compression.type</code>启用指定的压缩算法类型，比如</p>
+<pre><code class="language-java">Properties props = new Properties();
+props.put(&quot;bootstrap.servers&quot;, &quot;localhost:9092&quot;);
+props.put(&quot;acks&quot;, &quot;all&quot;);
+props.put(&quot;key.serializer&quot;, &quot;org.apache.kafka.common.seriailization.StringSerializer&quot;);
+props.put(&quot;value.serializer&quot;, &quot;org.apache.kafka.common.serialization.StringSerializer&quot;);
+prosp.put(&quot;comression.type&quot;, &quot;gzip&quot;); // 启用GZIP压缩
+Producer&lt;String, String&gt; producer = new KafkaProducer&lt;&gt;(props);
+</code></pre>
+<p>大部分情况下，Broker端接收到Producer的消息后原封不动地保存，但是有两种例外情况可能让Broker重新压缩消息：</p>
+<ol>
+<li>Broker端指定了和Producer端不同的压缩算法。Broker端接收到消息后先用Producer端的压缩算法解压，然后用Broker端的压缩算法重新压缩。</li>
+<li>Broker端发生了消息格式转换。主要是为了兼容老版本的消费者程序。</li>
+</ol>
+<p>Kafka会将消息使用的压缩算法封装进消息集合中，当Consumer读取消息集合时，就知道使用哪种压缩算法解压了。Broker端也会进行解压缩，目的时为了对消息执行验证，但是会对Broker端性能造成一定影响。</p>
+<p>Facebook Zstandard提供的各压缩算法benckmark结果</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>压缩比</th>
+<th>压缩吞吐量 MB/s</th>
+<th>解压吞吐量 MB/s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zstd 1.3.4-1</td>
+<td>2.877</td>
+<td>470</td>
+<td>1380</td>
+</tr>
+<tr>
+<td>zlib 1.2.11-1</td>
+<td>2.743</td>
+<td>110</td>
+<td>400</td>
+</tr>
+<tr>
+<td>brotli 1.0.2-0</td>
+<td>2.701</td>
+<td>410</td>
+<td>430</td>
+</tr>
+<tr>
+<td>quicklz 1.5.0-1</td>
+<td>2.238</td>
+<td>550</td>
+<td>710</td>
+</tr>
+<tr>
+<td>lzo1x2.09-1</td>
+<td>2.108</td>
+<td>650</td>
+<td>830</td>
+</tr>
+<tr>
+<td>lz4 1.8.1</td>
+<td>2.101</td>
+<td>750</td>
+<td>3700</td>
+</tr>
+<tr>
+<td>snappy 1.1.4</td>
+<td>2.091</td>
+<td>530</td>
+<td>1800</td>
+</tr>
+<tr>
+<td>lzf 3.6-1</td>
+<td>2.077</td>
+<td>400</td>
+<td>860</td>
+</tr>
+</tbody>
+</table>
+<h2 id="无消息丢失配置">无消息丢失配置</h2>
+<p>当Kafka的若干个（可以选择一个或者所有）Broker成功接收到一条消息并成功写入到日志文件后，会告诉生产者这条消息已成功提交。对于“已提交”的消息，Kafka会保证消息有限度的持久化。</p>
+<p>如果生产者使用的是<code>producer.send(msg)</code>发送消息，这个API是异步的，调用后立即返回，无法知道消息是否发送成功。应该使用<code>producer.send(msg, callback)</code>，这个API能准确的告诉客户端消息是否提交成功。</p>
+<p><code>acks=all</code>表示Producer对“已提交”消息的定义，all表明需要所有副本Broker都接收到消息才算“已提交”。</p>
+<p><code>retries=3</code>表示Producer的自动重试消息发送次数。</p>
+<h2 id="拦截器">拦截器</h2>
+<p>生产者拦截器，在消息发送前和消息成功提交后插入逻辑；消费者拦截器，在消息消费前和提交位移（offset）后插入逻辑。</p>
+<p>自定义生产者拦截器需要实现<code>org.apache.kafka.clients.producer.ProducerInterceptor</code>接口，核心方法：</p>
+<ol>
+<li><code>onSend</code>：在消息发送之前被调用</li>
+<li><code>onAcknowledgement</code>：在消息成功提交或发送失败后被调用，<code>onAcknowledgement</code>的调用要早于生产者发送消息的回调callback的调用</li>
+</ol>
+<p>自定义消费者拦截器需要实现<code>org.apache.kafka.clients.consumer.ConsumerInterceptor</code>接口，核心方法：</p>
+<ol>
+<li><code>onConsume</code>：在消息被Consumer处理之前调用</li>
+<li><code>onCommit</code>：Consumer在提交offset之后调用</li>
+</ol>
+<h2 id="连接">连接</h2>
+<p>在==<strong>创建</strong>== KafkaProducer 实例时，生产者应用会在后台创建并启动一个名为 Sender 的线程，该 Sender 线程开始运行时首先会创建与 Broker 的连接。也就是说，在调用send方法前，Producer就已经连接到Broker了，连接的是<code>bootstrap.servers</code>指定的Broker地址。实际使用中，并不需要把所有Broker地址都配置在<code>bootstrap.servers</code>参数中，因为为 Producer 一旦连接到集群中的任一台Broker，会向某一台Broker发送METADATA请求，就能拿到整个集群的 Broker 信息。</p>
+<p>当 Producer 更新了集群的元数据信息之后，如果发现与某些 Broker 当前没有连接，那么它就会创建一个 TCP 连接。同样地，当要发送消息时，Producer 发现尚不存在与目标 Broker 的连接，也会创建一个。</p>
+<p>Producer端参数<code>connections.max.idle.ms</code>配置了Kafka关闭TCP连接的空闲时间，默认9分钟。如果设置为 <code>-1</code>则表示不关闭空闲的TCP连接。</p>
+<p>和生产者不同的是，消费者端构建<code>KafkaConsumer</code>实例时是不会创建任何TCP连接的，而是在调用<code>KafkaConsumer.poll</code>方法时创建。再具体一点，poll方法内部有3个创建TCP连接的时机：</p>
+<ol>
+<li>发起<code>FindCoordinator</code>请求时。消费者向集群中负载最小（待发送请求最少）的Broker发送请求，查询Coordinator对于的Broker，这一步会创建Socket连接。这个TCP之后会被关闭。</li>
+<li>完成上一步的<code>FindCoordinator</code>请求后，连接正真的Coordinator，此时会创建Socket连接。</li>
+<li>消费数据时。消费者会为每个要消费的分区创建与该分区Leader副本所在的Broker连接的TCP。</li>
+</ol>
+<p>消费者关闭Socket也分为主动关闭和Kafka自动关闭。主动关闭是调用API关闭，如<code>KafkaCosnumer.close()</code>，自动关闭由消费者端参数<code>connection.max.idle.ms</code>控制，默认9分钟。</p>
+<h2 id="消息可靠性保障">消息可靠性保障</h2>
+<p>Kafka消息交付可靠性保障：</p>
+<ol>
+<li><mark>最多一次</mark>：消息可能会丢失，但不会重复发送（禁止Producer重试）</li>
+<li><mark>至少一次</mark>：消息不会丢失，但可能重复发送（Kafka默认）</li>
+<li><mark>精确一次</mark>：消息不会丢失，也不会重复发送（幂等和事务）</li>
+</ol>
+<p><strong>幂等性（Idempotence）</strong></p>
+<p>指的是某些操作或函数能够被执行多次，但每次得到的结果都是不变的。</p>
+<p>0.11.0.0之后引入了幂等性Producer，开启方法：</p>
+<pre><code class="language-java">props.put(&quot;enable.idempotence&quot;, true);
+// or
+props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
+</code></pre>
+<p>为实现幂等性，Kafka底层设计架构中引入了ProducerID和SequenceNumber</p>
+<ul>
+<li>ProducerID：在每个新的Producer初始化时，会被分配一个唯一的ProducerID，这个ProducerID对客户端使用者是不可见的。</li>
+<li>SequenceNumber：对于每个ProducerID，Producer发送数据的每个Topic和Partition都对应一个从0开始单调递增的SequenceNumber值。</li>
+</ul>
+<p>Producer在每条消息中附带了PID（ProducerID）和SequenceNumber。Broker 为每个 Topic 的每个 Partition 都维护了一个当前写成功的消息的最大 PID-SequenceNumber 元组，当 Broker 收到一个比当前最大 PID-Sequence Number 元组小（或等于）的 SequenceNumber 消息时，就会丢弃该消息，以避免造成数据重复存储。</p>
+<p><strong>幂等性Producer</strong></p>
+<p>能够保证某个主题的<strong>一个分区上</strong>不出现重复消息，它无法实现多个分区的幂等性。或者当Producer进程重启后，这种幂等性也会丢失。</p>
+<p>要实现多分区及多会话上的消息不重复，需要事务（Transaction）或依赖事务型Producer。</p>
+<p><strong>事务（Transaction）</strong></p>
+<p>主要是在 read committed 隔离级别上做事情。它能保证多条消息原子性地写入到目标分区，同时也能保证 Consumer 只能看到事务成功提交的消息。</p>
+<p><strong>事务型 Producer</strong></p>
+<p>事务型 Producer 能够保证将消息<mark>原子性</mark>地写入到多个分区中。这批消息要么全部写入成功，要么全部失败。另外，事务型 Producer 也不惧进程的重启。Producer 重启回来后，Kafka 依然保证它们发送消息的精确一次处理。</p>
+<pre><code class="language-properties">// 开启事务型Producer
+enable.idempotence=true
+</code></pre>
+<p>在Consumer端读取事务型Producer发送的消息，设置 <code>isolation.level</code>参数：</p>
+<ol>
+<li><code>read_uncommitted</code>：默认值，Consumer能读取Kafka写入的任何消息</li>
+<li><code>read_committed</code>：Consumer只会读取事务型Producer成功提交的事务写入的消息，也能看到非事务型Producer写入的所有消息。</li>
+</ol>
+<h2 id="消费者组">消费者组</h2>
+<p>Consumer Group 是 Kafka 提供的可扩展且具有容错性的消费者机制，组内的多个消费者或消费者实例共享一个公共的ID（Group ID），组内所有消费者协调在一起消费订阅主题的所有分区。</p>
+<p>如果所有实例都属于同一个 Group，那么它实现的就是消息队列模型；如果所有实例分别属于不同的 Group，那么它实现的就是发布 / 订阅模型。·</p>
+<p>理想情况下，Consumer 实例的数量应该等于该 Group 订阅主题的分区总数。</p>
+<p>在新版本的 Consumer Group 中，Kafka 社区重新设计了 Consumer Group 的位移管理方式，采用了将位移保存在 Kafka 内部主题（ __consumer_offsets）的方法。</p>
+<p>Rebalance 本质上是一种协议，规定了一个 Consumer Group 下的所有 Consumer 如何达成一致，来分配订阅Topic 的每个分区。</p>
+<p>触发Rebalance的3个条件：</p>
+<ol>
+<li>组成员数发生变更。有新的Consumer加入或有Consumer崩溃下线</li>
+<li>订阅主题数发生变更。Consumer Group 可以使用正则表达式的方式订阅主题，比如<code>consumer.subscribe(Pattern.compile(“t.*c”)) </code>，当有新的主题匹配正则表达式则会触发</li>
+<li>订阅主题的分区数发生变更。</li>
+</ol>
+<p>每个Consumer会定期地向Coordinator发送心跳，如果Consumer不能及时地发送心跳请求，Coordinator就会将其从Group中移除，开启新一轮的Rebalance。这个时间由参数<code>session.timeout.ms</code>控制，默认10s。参数<code>heartbeat.interval.ms</code>控制心跳请求的频率，Coordinator通过心跳请求的响应通知Consumer开启Rebalance。参数<code>max.poll.interval.ms</code>参数限定Consumer端两次poll调用的最大间隔，默认5min，如果超过这个时间，表明Consumer无法顺利地消费完poll的消息，Consumer会主动离开Group，Coordinator会开启新一轮的Rebalance。</p>
+<p>但是，Rebalance发生时，所有Consumer实例都会停止消费，直到Rebalance完成。Rebalance过程中，由协调者Coordinator组件帮助完成订阅主题分区的分配，Coordinator专门为Consumer Group 服务，负责为Group执行Rebalance以及提供位移管理和组成员管理等。所有Broker在启动时，都会创建和开启相应的Coordinator组件。</p>
+<p><strong>协调者Coordinator</strong></p>
+<p>协调者专门为Consumer Group 服务，负责为Group执行Rebalance以及提供位移管理和组成员管理。Consumer在提交位移时，其实是向Coordinator所在的Broker提交位移；当Consumer启动时，也是向Coordinator所在的Broker发送各种请求，然后由Coordinator执行消费者组的注册、成员管理等元数据管理。</p>
+<p>所有的Broker都有各自的Coordinator组件。</p>
+<ol>
+<li>通过计算<code>partitionId = Math.abs(groupId.hashCode() % offsetTopicPartitionCount)</code>确定由位移主题的哪个分区来保存Group的数据。</li>
+<li>找到该分区的Leader副本，该Broker就是对于的Coordinator。</li>
+</ol>
+<p><strong>位移主题 Offset Topic</strong></p>
+<p><code>__consumer_offsets</code>使用Kafka自定义的消息格式，主题中的key包含3部分内容：GroupID，主题名，分区号。</p>
+<p>主题消息体的格式：</p>
+<ol>
+<li>包含位移数据、时间戳和自定义的数据</li>
+<li>用于保存Consumer Group信息的消息</li>
+<li>用于删除Group过期位移甚至是删除Group的消息（消息体为null，当某个Consumer Group下所有Consumer都停止且位移数据都已被删除，Kafka会向位移主题的对应分区写入）</li>
+</ol>
+<p>当Kafka集群中第一个Consumer启动时，会自动创建位移主题。<code>__consumer_offsets</code>主题的分区数通过Broker端参数<code>offset.topic.num.partitions</code>设置，默认50，副本数默认3。</p>
+<p>如果Consumer采用的是自动提交位移的方式，就会无限期地向<code>__consumer_offsets</code>中写入主题消息。此时需要Kafka定期删除过期消息。Kafka使用的是<code>Compact</code>策略，即对于主题中同一个Key的多条消息，只保留最新的消息。Kafka提供了专门的后台线程（<code>Log Cleaner</code>）定期巡检待Compact的主题，看看是否存在满足条件的可删除数据。</p>
+<h2 id="多线程消费者实例">多线程消费者实例</h2>
+<p><code>KafkaConsumer</code>是单线程设计的（心跳线程是单独的线程），能简化Consumer端的设计，客户端可以在Consumer获取到消息后，多线程处理消息。</p>
+<p><code>KafkaConsumer</code>类不是线程安全的，如果在多线程中共享一个<code>KafkaConsumer</code>实例，程序会抛出异常。可以多线程中每个线程维护一个专属的<code>KafkaConsumer</code>实例，负责完整的消息获取、处理流程。</p>
+<h2 id="消费进度">消费进度</h2>
+<p>Kafka监控的是分区的Lag，如果要计算主题的Lag，需要手动汇总素有分区的Lag。如果消费者速度赶不上生产者的速度，会导致数据不在操作系统的页缓存中，而是磁盘中，这样这些数据就不能通过零拷贝传输，进一步拉大消费者和生产者的差距，Lag越来越大。</p>
+<p>有3种方法监控消费进度：</p>
+<ol>
+<li>Kafka自带的命令行工具<code>kafka-consumer-groups</code>脚本</li>
+<li>Kafka Java Consumer API编程</li>
+<li>Kafka自带的JMX监控指标</li>
+</ol>
+<h2 id="副本">副本</h2>
+<p>副本机制，也称备份机制，通常指分布式系统在多台机器上有相同的数据拷贝。</p>
+<ol>
+<li>提供数据冗余。即使部分组件失效，系统依然能继续运转，提高整体可用性和数据持久性。</li>
+<li>提高高伸缩性。支持横向扩展，能通过增加机器的方式提高读写性能，进而提高吞吐量。</li>
+<li>改善数据局部性。运行数据放入与用户地理位置相近的地方。</li>
+</ol>
+<p>Kafka的副本机制与其他分布式系统不同，Kafka的追随者副本不对外提高服务，所有的请求必须由Leader副本处理，追随者副本的唯一任务就是从Leader副本<mark>异步拉取</mark>消息，写入到自己的提交日志种，从而实现与Leader副本的同步。当Leader副本挂了，Kafka依托于Zookeeper提供的监控功能可以实时感知，并立即开启新一轮的Leader选举。</p>
+<p>这种机制有两个好处：</p>
+<ol>
+<li>实现“Read-your-writes”，生产者写入消息后，消费者马上可以读取到，而不用等待异步同步完成。</li>
+<li>实现单调读（Monotonic Reads），由于副本的同步进度不一样，避免从不同的副本上读取到不一致的数据。</li>
+</ol>
+<p><strong>ISR （In-Sync Replicas）</strong></p>
+<p>ISR副本集合是一个动态调整的集合，集合中的副本都被认为是和Leader副本同步的，Leader副本是天然就在ISR中的（如果Leader副本挂了，集合就是空的）。Broker端参数<code>replica.lag.time.max.ms</code>含义是追随者副本能够落后Leader副本的最大时间间隔（默认10s），如果追随者副本落后超过这个时间，就会被踢出ISR集合，等重新追上了会被重新加回ISR。</p>
+<p>所有不在ISR集合中的存活副本称为<mark>非同步副本</mark>，如果允许选举这种副本的过程称为<mark>Unclean 领导者选举</mark>，Broker端参数<code>unclean.leader.election.enable</code>可以控制是否允许非同步副本参与Leader选举。如果开启，可能回造成数据丢失，反之，则能保证数据的一致性。通过这个参数，Kafka赋予你选择CP还是AP的权利。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://xuhang.github.io/post/electron-ying-yong-kai-fa/" class="post-title gt-a-link">
+                    Electron 应用开发
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'Ov23lizzrJI1FmIDNwSB',
+    clientSecret: 'b78406f7fdde3291beae5dd04d395f79ff7aa4cd',
+    repo: 'xuhang.github.io',
+    owner: 'xuhang',
+    admin: ['xuhang'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">记录生活</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/xuhang" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://xuhang.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
