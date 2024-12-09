@@ -4,7 +4,7 @@ date: 2024-12-08 11:28:09
 tags: [James,邮件服务器]
 published: true
 hideInList: false
-feature: 
+feature: /post-images/james-you-jian-fu-wu-qi-da-jian.png
 isTop: false
 ---
 ## 下载

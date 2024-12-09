@@ -4,7 +4,7 @@ date: 2024-12-08 08:56:12
 tags: [mysql,geektime,note]
 published: true
 hideInList: false
-feature: 
+feature: /post-images/mysql45-jiang-bi-ji.png
 isTop: false
 ---
 ## 基础架构

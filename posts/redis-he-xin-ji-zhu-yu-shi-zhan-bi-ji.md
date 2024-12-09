@@ -4,7 +4,7 @@ date: 2024-12-07 20:23:23
 tags: [redis,geektime,note]
 published: true
 hideInList: false
-feature: 
+feature: /post-images/redis-he-xin-ji-zhu-yu-shi-zhan-bi-ji.png
 isTop: false
 ---
 ## 数据类型和数据结构

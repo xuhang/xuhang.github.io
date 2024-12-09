@@ -4,7 +4,7 @@ date: 2024-12-08 11:01:07
 tags: [kafka,geektime,note]
 published: true
 hideInList: false
-feature: 
+feature: /post-images/kafka-he-xin-ji-zhu-yu-shi-zhan-bi-ji.png
 isTop: false
 ---
 ## 术语

@@ -4,7 +4,7 @@ date: 2024-12-08 11:16:11
 tags: [chrome 插件,JavaScript]
 published: true
 hideInList: false
-feature: 
+feature: /post-images/chrome-cha-jian-kai-fa.png
 isTop: false
 ---
 ## Manifest

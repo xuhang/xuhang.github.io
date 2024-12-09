@@ -4,7 +4,7 @@ date: 2024-12-08 11:35:42
 tags: [debug,Java]
 published: true
 hideInList: false
-feature: 
+feature: /post-images/kai-fa-ri-zhi.png
 isTop: false
 ---
 ## Spring AOP 注解

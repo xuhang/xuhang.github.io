@@ -4,7 +4,7 @@ date: 2024-12-08 11:05:28
 tags: [设计模式,note]
 published: true
 hideInList: false
-feature: 
+feature: /post-images/she-ji-mo-shi-he-kai-fa-yuan-ze.png
 isTop: false
 ---
 ## 软件开发的7条原则
