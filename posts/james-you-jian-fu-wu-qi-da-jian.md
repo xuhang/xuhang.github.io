@@ -11,11 +11,11 @@ isTop: false
 
 Apache James 3.x配置和2.x有较大区别，网上的文档大多基于2.x，所以我们也使用2.x版本。
 
+<!-- more -->
+
 ```bash
 wget http://mirrors.tuna.tsinghua.edu.cn/apache//james/server/james-binary-2.3.2.1.tar.gz
 ```
-
-<!-- more -->
 
 > 3.x启动的时候经常会报`'priority' init parameter is compulsory`异常，这里可能是因为配置文件里本应该是<priority>元素的地方配置成了<value>导致的。修改`conf/mailetcontainer.xml`文件中
 >

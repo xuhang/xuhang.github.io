@@ -61,7 +61,7 @@ public class WelcomeController {
 
 ## jQuery 自定义选择器
 
-```jquery
+```javascript
 $(document).ready(function() {
     $.extend($.expr[':'], {
         moreThen1000px: function(a) {
